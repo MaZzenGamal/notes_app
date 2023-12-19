@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'custom_note_item.dart';
+import 'notes_list_view.dart';
 
 class NotesViewBody extends StatelessWidget {
   const NotesViewBody({
@@ -14,10 +15,13 @@ class NotesViewBody extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          NoteItem(),
+          Expanded(child: NotesListView())
         ],
       ),
     );
   }
 }
+
+
+
 
