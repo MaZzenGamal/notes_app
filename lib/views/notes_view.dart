@@ -11,7 +11,7 @@ class NotesView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Padding(
-          padding: EdgeInsets.only(left: 24),
+          padding: EdgeInsets.only(left: 8),
           child: Text('Notes'),
         ),
         actions: [
