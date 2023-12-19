@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 Padding searchIcon() {
   return Padding(
-    padding: const EdgeInsets.only(right: 24),
+    padding: const EdgeInsets.only(right: 20),
     child: IconButton(
       onPressed: () {},
       icon: const Icon(Icons.search),
