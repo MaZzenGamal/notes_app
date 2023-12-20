@@ -5,7 +5,7 @@ Padding customIcon({required IconData icon}) {
     padding: const EdgeInsets.only(right: 20),
     child: IconButton(
       onPressed: () {},
-      icon:  Icon(icon),
+      icon:  Icon(icon,color: Colors.white,),
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Colors.grey[850]),
         shape: MaterialStateProperty.all(
