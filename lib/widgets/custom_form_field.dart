@@ -8,17 +8,22 @@ class CustomFormTextField extends StatelessWidget {
         this.onChanged,
         this.obscureText = false,
         this.controller,
-        this.type});
+        this.type,
+        this.maxLines = 1
+      });
 
   Function(String)? onChanged;
   String? hintText;
   bool? obscureText;
   TextEditingController? controller = TextEditingController();
   TextInputType? type;
+  int maxLines ;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+
+      maxLines: maxLines,
       keyboardType: type,
       controller: controller,
       onTapOutside: (event) => FocusScope.of(context).unfocus(),
