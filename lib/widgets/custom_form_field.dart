@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:notes_app/constants.dart';
 
 class CustomFormTextField extends StatelessWidget {
-   CustomFormTextField(
+   const CustomFormTextField(
       {super.key,
         this.hintText,
         this.onChanged,
@@ -12,12 +12,12 @@ class CustomFormTextField extends StatelessWidget {
         this.maxLines = 1
       });
 
-  Function(String)? onChanged;
-  String? hintText;
-  bool? obscureText;
-  TextEditingController? controller = TextEditingController();
-  TextInputType? type;
-  int maxLines ;
+  final Function(String)? onChanged;
+  final String? hintText;
+  final bool? obscureText;
+  final TextEditingController? controller;
+  final TextInputType? type;
+  final int maxLines ;
 
   @override
   Widget build(BuildContext context) {

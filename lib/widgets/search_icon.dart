@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-Padding searchIcon() {
+Padding customIcon({required IconData icon}) {
   return Padding(
     padding: const EdgeInsets.only(right: 20),
     child: IconButton(
       onPressed: () {},
-      icon: const Icon(Icons.search),
+      icon:  Icon(icon),
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all(Colors.grey[850]),
         shape: MaterialStateProperty.all(

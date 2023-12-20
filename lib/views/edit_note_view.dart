@@ -1,15 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:notes_app/widgets/search_icon.dart';
+import '../widgets/custom_appBar.dart';
+import '../widgets/custom_form_field.dart';
 
-import 'custom_button.dart';
-import 'custom_form_field.dart';
-
-class AddNoteBottomSheet extends StatelessWidget {
-  const AddNoteBottomSheet({super.key});
+class EditNoteView extends StatelessWidget {
+  const EditNoteView({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const SingleChildScrollView(
-      child: Padding(
+    return Scaffold(
+      appBar: customAppBar(
+          title: 'Edit Note', widget: [customIcon(icon: Icons.done)]),
+      body: const Padding(
         padding: EdgeInsets.symmetric(vertical: 32, horizontal: 16),
         child: Column(
           children: [
@@ -23,15 +25,9 @@ class AddNoteBottomSheet extends StatelessWidget {
               hintText: 'Content',
               maxLines: 5,
             ),
-            SizedBox(
-              height: 100,
-            ),
-            CustomButton(),
           ],
         ),
       ),
     );
   }
 }
-
-
