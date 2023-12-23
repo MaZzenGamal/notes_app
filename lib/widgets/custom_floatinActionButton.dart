@@ -8,6 +8,7 @@ FloatingActionButton customFloatingActionButton(BuildContext context) {
     shape: const CircleBorder(),
     onPressed: () {
       showModalBottomSheet(
+          isScrollControlled: true,
           context: context,
           builder: (context) {
             return const AddNoteBottomSheet();
