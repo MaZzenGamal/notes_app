@@ -14,6 +14,7 @@ class NotesView extends StatelessWidget {
     return BlocProvider(
       create: (context) => NotesCubit(),
       child: Scaffold(
+       //resizeToAvoidBottomInset: false,
         appBar: customAppBar(
             title: 'Notes', widget: [customIcon(icon: Icons.search)]),
 
