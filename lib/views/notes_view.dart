@@ -13,7 +13,9 @@ class NotesView extends StatelessWidget {
     return Scaffold(
      //resizeToAvoidBottomInset: false,
       appBar: customAppBar(
-          title: 'Notes', widget: [customIcon(icon: Icons.search)]),
+          title: 'Notes', widget: [customIcon(
+          onPressed: (){},
+          icon: Icons.search)]),
 
       floatingActionButton: customFloatingActionButton(context),
       //>>>>bottom sheet
