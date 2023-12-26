@@ -86,16 +86,30 @@ class _AddNoteFormState extends State<AddNoteForm> {
   }
 }
 
-class ColorsListView extends StatelessWidget {
+class ColorsListView extends StatefulWidget {
   const ColorsListView({
     super.key,
   });
 
   @override
+  State<ColorsListView> createState() => _ColorsListViewState();
+}
+
+class _ColorsListViewState extends State<ColorsListView> {
+  int currentIndex = 0;
+
+  List<Color> colors = const[
+     Color(0xffEA7317),
+     Color(0xffFEC601),
+     Color(0xff73BFB8),
+     Color(0xff3DA5D9),
+     Color(0xff2364AA),
+  ];
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 50,
-     // width: 230,
+      height: 32*2,
+       width: 350,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
         itemCount: 5,
@@ -105,7 +119,17 @@ class ColorsListView extends StatelessWidget {
           );
         },
         itemBuilder: (BuildContext context, int index) {
-          return const ColorItem();
+          return  GestureDetector(
+            onTap: (){
+              setState(() {
+                currentIndex = index;
+              });
+            },
+            child: ColorItem(
+              color: colors[index],
+              isActive: currentIndex == index ,
+            ),
+          );
         },
       ),
     );
@@ -115,13 +139,23 @@ class ColorsListView extends StatelessWidget {
 class ColorItem extends StatelessWidget {
   const ColorItem({
     super.key,
+    required this.isActive, required this.color,
   });
+
+  final bool isActive;
+  final Color color;
 
   @override
   Widget build(BuildContext context) {
-    return const CircleAvatar(
-      radius: 25,
-      backgroundColor: Colors.red,
-    );
+    return isActive ?  CircleAvatar(
+      radius: 32,
+      backgroundColor: Colors.white,
+      child: CircleAvatar(
+        radius: 30,
+        backgroundColor: color,
+      ),
+    ) :  CircleAvatar(
+        radius: 30,
+        backgroundColor: color);
   }
 }
