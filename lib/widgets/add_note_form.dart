@@ -29,6 +29,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
       key: formKey,
       autovalidateMode: autoValidateMode,
       child: Column(
+        //crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           CustomFormTextField(
             controller: titleController,
@@ -43,29 +44,18 @@ class _AddNoteFormState extends State<AddNoteForm> {
             maxLines: 5,
           ),
           const SizedBox(
-            height: 100,
+            height: 50,
+          ),
+          const ColorsListView(),
+          const SizedBox(
+            height: 16,
           ),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomButton(
                   isLoading: state is AddNoteLoading ? true : false,
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      formKey.currentState!.save();
-                      DateTime now = DateTime.now();
-                      String formattedDate =
-                          DateFormat('yyyy-MM-dd').format(now);
-                      NoteModel noteModel = NoteModel(
-                          title: titleController.text,
-                          subtitle: subtitleController.text,
-                          date: formattedDate,
-                          color: Colors.amber.value);
-
-                      BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
-                    } else {
-                      autoValidateMode = AutovalidateMode.always;
-                      setState(() {});
-                    }
+                    addButtonFunction(context);
                   });
             },
           ),
@@ -74,6 +64,64 @@ class _AddNoteFormState extends State<AddNoteForm> {
           ),
         ],
       ),
+    );
+  }
+
+  void addButtonFunction(BuildContext context) {
+    if (formKey.currentState!.validate()) {
+      formKey.currentState!.save();
+      DateTime now = DateTime.now();
+      String formattedDate = DateFormat('yyyy-MM-dd').format(now);
+      NoteModel noteModel = NoteModel(
+          title: titleController.text,
+          subtitle: subtitleController.text,
+          date: formattedDate,
+          color: Colors.amber.value);
+
+      BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
+    } else {
+      autoValidateMode = AutovalidateMode.always;
+      setState(() {});
+    }
+  }
+}
+
+class ColorsListView extends StatelessWidget {
+  const ColorsListView({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+     // width: 230,
+      child: ListView.separated(
+        scrollDirection: Axis.horizontal,
+        itemCount: 5,
+        separatorBuilder: (BuildContext context, int index) {
+          return const SizedBox(
+            width: 10,
+          );
+        },
+        itemBuilder: (BuildContext context, int index) {
+          return const ColorItem();
+        },
+      ),
+    );
+  }
+}
+
+class ColorItem extends StatelessWidget {
+  const ColorItem({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return const CircleAvatar(
+      radius: 25,
+      backgroundColor: Colors.red,
     );
   }
 }
