@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 import 'package:notes_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notes_app/models/note_model.dart';
 
+import '../constants.dart';
 import 'custom_button.dart';
 import 'custom_form_field.dart';
 
@@ -98,13 +99,7 @@ class ColorsListView extends StatefulWidget {
 class _ColorsListViewState extends State<ColorsListView> {
   int currentIndex = 0;
 
-  List<Color> colors = const[
-     Color(0xffEA7317),
-     Color(0xffFEC601),
-     Color(0xff73BFB8),
-     Color(0xff3DA5D9),
-     Color(0xff2364AA),
-  ];
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -112,7 +107,7 @@ class _ColorsListViewState extends State<ColorsListView> {
        width: 350,
       child: ListView.separated(
         scrollDirection: Axis.horizontal,
-        itemCount: 5,
+        itemCount: kColors.length,
         separatorBuilder: (BuildContext context, int index) {
           return const SizedBox(
             width: 10,
@@ -121,12 +116,12 @@ class _ColorsListViewState extends State<ColorsListView> {
         itemBuilder: (BuildContext context, int index) {
           return  GestureDetector(
             onTap: (){
-              setState(() {
-                currentIndex = index;
-              });
+              currentIndex = index;
+              BlocProvider.of<AddNoteCubit>(context).color = kColors[index];
+              setState(() {});
             },
             child: ColorItem(
-              color: colors[index],
+              color: kColors[index],
               isActive: currentIndex == index ,
             ),
           );
@@ -159,3 +154,6 @@ class ColorItem extends StatelessWidget {
         backgroundColor: color);
   }
 }
+
+
+

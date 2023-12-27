@@ -35,7 +35,7 @@ class CustomFormTextField extends StatelessWidget {
       maxLines: maxLines,
       keyboardType: type,
       controller: controller,
-      onTapOutside: (event) => FocusScope.of(context).unfocus(),
+     // onTapOutside: (event) => FocusScope.of(context).unfocus(),
       obscureText: obscureText!,
       onChanged: onChanged,
       cursorColor: kPrimaryColor,

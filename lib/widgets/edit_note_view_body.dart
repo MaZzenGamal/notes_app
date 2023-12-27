@@ -6,6 +6,7 @@ import 'package:notes_app/widgets/search_icon.dart';
 
 import 'custom_appBar.dart';
 import 'custom_form_field.dart';
+import 'edit_notes_color_list_view.dart';
 
 class EditNoteViewBody extends StatefulWidget {
   const EditNoteViewBody({
@@ -57,12 +58,15 @@ class _EditNoteViewBodyState extends State<EditNoteViewBody> {
               hintText: widget.note.subtitle,
               maxLines: 5,
             ),
+            const SizedBox(
+              height: 18,
+            ),
+            EditNoteColorsList(note:widget.note),
           ],
         ),
       ),
     );
-
-
-
   }
 }
+
+
